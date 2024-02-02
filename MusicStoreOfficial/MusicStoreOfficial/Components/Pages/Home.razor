@@ -1,0 +1,52 @@
+﻿@page "/"
+@inject IAlbumRepository AlbumRepository
+@using MusicStoreOfficial.Client.Services
+@using SharedLibrary.Models
+@using SharedLibrary.Repositories
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+
+<PageTitle>Home</PageTitle>
+
+<div class="caixa">
+    @if (albumList is null || albumList.Count == 0)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        @foreach (var album in albumList)
+        {
+            <div class="card" style="width: 18rem;">
+                <img src="@album.Imagem" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">@album.Nome</h5>
+                    <p class="card-text">Artista : @album.Artista</p>
+                    <p class="card-text">Gênero : @album.Genero</p>
+                    <p class="card-text">Id : @album.AlbumId</p>
+                    <button class="btn btn-primary" @onclick="()=> DeletarAlbum(album.AlbumId)">Deletar</button>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@code {
+    List<Album> albumList = new List<Album>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        albumList = await AlbumRepository.GetAllAlbunsAsync();
+    }
+
+    public async Task EditarAlbum(int id)
+    {
+        NavigationManager.NavigateTo($"/edit/{id}");
+    } 
+
+    public async Task DeletarAlbum(int id)
+    {
+        NavigationManager.NavigateTo($"/delete/{id}");
+    }
+}

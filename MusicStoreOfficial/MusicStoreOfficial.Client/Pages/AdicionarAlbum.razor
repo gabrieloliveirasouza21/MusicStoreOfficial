@@ -1,0 +1,48 @@
+﻿@page "/adicionar"
+@using MusicStoreOfficial.Client.ViewModel
+@inject NavigationManager NavigationManager
+@inherits MvvmBlazor.Components.MvvmComponentBase<AddAlbumViewModel>
+@rendermode InteractiveServer
+<PageTitle>Adicionar Album</PageTitle>
+
+<br />
+<hr />
+<div class="contain">
+    <EditForm Model="@BindingContext.album" OnSubmit="@BindingContext.HandleSubmit" FormName="adicionarAlbum">
+        <label>Nome: </label>
+        <br />
+        <InputText @bind-Value="@BindingContext.album.Nome">
+
+        </InputText>
+        <br />
+        <br />
+        <br />
+        <label>Artista:</label>
+        <br />
+        <InputText @bind-Value="@BindingContext.album.Artista">
+
+        </InputText>
+        <br />
+        <br />
+        <br />
+        <label>Gênero:</label>
+        <br />
+        <InputText @bind-Value="@BindingContext.album.Genero">
+
+        </InputText>
+        <br />
+        <br />
+        <br />
+        <label>Link Imagem:</label>
+        <br />
+        <InputText @bind-Value="@BindingContext.album.Imagem">
+
+        </InputText>
+        <br />
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <h4><em>@BindingContext.isAdded</em></h4>
+    </EditForm>
+</div>
+<br />
+<hr />

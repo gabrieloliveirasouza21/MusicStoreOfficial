@@ -1,0 +1,66 @@
+﻿@page "/edit"
+@* @inherits MvvmBlazor.Components.MvvmComponentBase<EditAlbumViewModel> *@
+@rendermode InteractiveServer
+
+<br />
+<hr />
+<div class="contain">
+
+    <label>Id:</label>
+    <input type="text" @bind="id"/>
+    <EditForm Model="albumEditado" OnSubmit="HandleSubmit">
+        <label>Nome:</label>
+        <br />
+        <InputText @bind-Value="albumEditado.Nome"></InputText>
+        <br />
+        <br />
+        <br />
+        <label>Artista:</label>
+        <br />
+        <InputText @bind-Value="albumEditado.Artista"></InputText>
+        <br />
+        <br />
+        <br />
+        <label>Genero:</label>
+        <br />
+        <InputText @bind-Value="albumEditado.Genero"></InputText>
+        <br />
+        <br />
+        <br />
+
+        <label>Link da Imagem:</label>
+        <br />
+        <InputText @bind-Value="albumEditado.Imagem"></InputText>
+        <br />
+        <br />
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <h4><em>@isEdited</em></h4>
+    </EditForm>
+</div>
+
+
+@code {
+    [SupplyParameterFromForm]
+    public Album albumEditado { get; set; } = new Album() { Nome = string.Empty };
+    public int id { get; set; }
+    public string isEdited = "";
+
+
+    // private readonly IAlbumRepository _albumRepository;
+
+    // public EditAlbumViewModel(IAlbumRepository albumRepository)
+    // {
+    //     _albumRepository = albumRepository;
+    // }
+
+
+    public async Task<Album> HandleSubmit()
+    {
+        albumEditado.AlbumId = id;
+        var albumEdit = await _albumRepository.UpdateAlbumAsync(albumEditado);
+        isEdited = "Album Editado";
+        return albumEditado;
+    }
+}
+
