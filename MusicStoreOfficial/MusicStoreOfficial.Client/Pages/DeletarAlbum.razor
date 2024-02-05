@@ -1,9 +1,10 @@
 ﻿@page "/delete/{id:int}"
+@* @inherits MvvmBlazor.Components.MvvmComponentBase<DeleteAlbumViewModel> *@
 @rendermode InteractiveServer
 <h3>DeletarAlbum</h3>
 
 <button class="btn btn-danger" @onclick="DeleteAlbum"> Tem Certeza Que Deseja Deletar o Album ?</button>
-<h1>@isDeleted</h1>
+<h1 class="text-white">@isDeleted</h1>
 
 
 
@@ -16,8 +17,8 @@
     {
         var delete = await _albumRepository.DeleteAlbumAsync(Id);
         isDeleted = "Album deletado com sucesso";
-        return delete;
         await Task.Delay(500);
+        return delete;
 
     }
 }
