@@ -1,22 +1,25 @@
 ﻿@page "/"
-@inject IAlbumRepository AlbumRepository
 @using MusicStoreOfficial.Client.Services
 @using SharedLibrary.Models
 @using SharedLibrary.Repositories
+@using System.Collections.ObjectModel
+@inject IAlbumRepository AlbumRepository
 @inject NavigationManager NavigationManager
+@inherits MvvmBlazor.Components.MvvmComponentBase<AddAlbumViewModel>
+@inject AddAlbumViewModel _viewModel
 @* @rendermode InteractiveServer *@
 
 
 <PageTitle>Home</PageTitle>
 
 <div class="caixa">
-    @if (albumList is null || albumList.Count == 0)
+    @if (_viewModel.AlbumList is null || _viewModel.AlbumList.Count == 0)
     {
         <p><em>Loading...</em></p>
     }
     else
     {
-        @foreach (var album in albumList)
+        @foreach (var album in Bind(_viewModel,x => x.AlbumList))
         {
             <div class="card bg-dark" style="width: 18rem;border:none">
                 <img src="@album.Imagem" class="card-img-top text-white">
@@ -33,20 +36,16 @@
 </div>
 
 @code {
-    List<Album> albumList = new List<Album>();
+
 
     protected override async Task OnInitializedAsync()
     {
-        albumList = await AlbumRepository.GetAllAlbunsAsync();
+       
     }
 
-    public async Task EditarAlbum(int id)
-    {
-        NavigationManager.NavigateTo($"/edit/{id}");
-    } 
 
     public async Task DeletarAlbum(int id)
     {
-        NavigationManager.NavigateTo($"/delete/{id}");
+       
     }
 }

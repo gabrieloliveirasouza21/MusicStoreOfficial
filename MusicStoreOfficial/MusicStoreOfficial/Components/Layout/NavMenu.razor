@@ -1,4 +1,5 @@
 ﻿@rendermode InteractiveServer
+
 @* <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">MusicStoreOfficial</a>
@@ -49,91 +50,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                Adicionar Album
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="contain">
-                                                <EditForm Model="@BindingContext.album" OnSubmit="@BindingContext.HandleSubmit" FormName="adicionarAlbum">
-                                                    <label class="text-white">Nome: </label>
-                                                    <br />
-                                                    <InputText @bind-Value="@BindingContext.album.Nome">
-
-                                                    </InputText>
-                                                    <br />
-                                                    <br />
-                                                    <br />
-                                                    <label class="text-white">Artista:</label>
-                                                    <br />
-                                                    <InputText @bind-Value="@BindingContext.album.Artista">
-
-                                                    </InputText>
-                                                    <br />
-                                                    <br />
-                                                    <br />
-                                                    <label class="text-white">Gênero:</label>
-                                                    <br />
-                                                    <InputText @bind-Value="@BindingContext.album.Genero">
-
-                                                    </InputText>
-                                                    <br />
-                                                    <br />
-                                                    <br />
-                                                    <label class="text-white">Link Imagem:</label>
-                                                    <br />
-                                                    <InputText @bind-Value="@BindingContext.album.Imagem">
-
-                                                    </InputText>
-                                                    <br />
-                                                    <br />
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                                    <h4 class="text-white"><em>@BindingContext.isAdded</em></h4>
-                                                </EditForm>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Understood</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <AddModal />
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white">
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                Editar Album
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            ...
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Understood</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <EditModal />
                         </a>
                     </li>
                 </ul>

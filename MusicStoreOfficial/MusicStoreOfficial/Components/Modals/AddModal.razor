@@ -1,0 +1,68 @@
+﻿@using SharedLibrary.Models
+@inherits MvvmBlazor.Components.MvvmComponentBase<AddAlbumViewModel>
+@inject AddAlbumViewModel _addAlbum
+
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Adicionar Album
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="staticBackdropLabel">Adicionar Album</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="contain">
+                    <EditForm Model="_addAlbum.album" OnSubmit="_addAlbum.HandleSubmit" FormName="adicionarAlbum">
+                        <label class="text-dark">Nome: </label>
+                        <br />
+                        <InputText @bind-Value="_addAlbum.album.Nome">
+
+                        </InputText>
+                        <br />
+                        <br />
+                        <br />
+                        <label class="text-dark">Artista:</label>
+                        <br />
+                        <InputText @bind-Value="_addAlbum.album.Artista">
+
+                        </InputText>
+                        <br />
+                        <br />
+                        <br />
+                        <label class="text-dark">Gênero:</label>
+                        <br />
+                        <InputText @bind-Value="_addAlbum.album.Genero">
+
+                        </InputText>
+                        <br />
+                        <br />
+                        <br />
+                        <label class="text-dark">Link Imagem:</label>
+                        <br />
+                        <InputText @bind-Value="_addAlbum.album.Imagem">
+
+                        </InputText>
+                        <br />
+                        <br />
+
+                        @*  <h4 class="text-white"><em>@_addAlbum.isAdded</em></h4> *@
+
+                    </EditForm>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" @onclick="_addAlbum.HandleSubmit">Adicionar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+}

@@ -1,0 +1,62 @@
+﻿@inject EditAlbumViewModel _editAlbum
+@rendermode InteractiveServer
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
+    Editar Album
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="staticBackdropLabel">Editar Album</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="contain">
+
+                    <label class="text-dark">Id:</label>
+                    <br />
+                    <input type="text" @bind="_editAlbum.Id" />
+                    <br />
+                    <br />
+                    <EditForm Model="_editAlbum.albumEditado" OnSubmit="_editAlbum.HandleSubmit">
+                        <label class="text-dark">Nome:</label>
+                        <br />
+                        <InputText @bind-Value="_editAlbum.albumEditado.Nome"></InputText>
+                        <br />
+                        <br />
+                        <br />
+                        <label class="text-dark">Artista:</label>
+                        <br />
+                        <InputText @bind-Value="_editAlbum.albumEditado.Artista"></InputText>
+                        <br />
+                        <br />
+                        <br />
+                        <label class="text-dark">Genero:</label>
+                        <br />
+                        <InputText @bind-Value="_editAlbum.albumEditado.Genero"></InputText>
+                        <br />
+                        <br />
+                        <br />
+
+                        <label class="text-dark">Link da Imagem:</label>
+                        <br />
+                        <InputText @bind-Value="_editAlbum.albumEditado.Imagem"></InputText>
+                        <br />
+                        <br />
+                        <br />
+
+                        <h4 class="text-dark"><em>@_editAlbum.isEdited</em></h4>
+                    </EditForm>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

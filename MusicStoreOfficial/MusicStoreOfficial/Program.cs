@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using MusicStoreOfficial.Client.Pages;
+using MusicStoreOfficial.Client.Services;
 using MusicStoreOfficial.Client.ViewModel;
 using MusicStoreOfficial.Components;
 using MusicStoreOfficial.DataContext;
 using MusicStoreOfficial.ViewModel;
+using SharedLibrary.Models;
 using SharedLibrary.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +23,7 @@ builder.Services.AddDbContext<DbCtx>(
             "DefaultConnection")));
 
 builder.Services.AddMvvm();
+builder.Services.AddScoped<IAlbumRepository, AlbumService>();
 builder.Services.AddScoped<AddAlbumViewModel>();
 builder.Services.AddScoped<EditAlbumViewModel>();
 builder.Services.AddScoped<DeleteAlbumViewModel>();

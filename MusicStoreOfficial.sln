@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStoreOfficial", "MusicStoreOfficial\MusicStoreOfficial\MusicStoreOfficial.csproj", "{0178F8AB-64E5-4148-B809-20D1DE036AE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicStoreOfficial", "MusicStoreOfficial\MusicStoreOfficial\MusicStoreOfficial.csproj", "{0178F8AB-64E5-4148-B809-20D1DE036AE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStoreOfficial.Client", "MusicStoreOfficial\MusicStoreOfficial.Client\MusicStoreOfficial.Client.csproj", "{20C13753-2EC1-45E3-BFB8-25C8BCD3AC72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicStoreOfficial.Client", "MusicStoreOfficial\MusicStoreOfficial.Client\MusicStoreOfficial.Client.csproj", "{20C13753-2EC1-45E3-BFB8-25C8BCD3AC72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{362EACA3-450C-4BB9-93C6-AE5579976220}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{362EACA3-450C-4BB9-93C6-AE5579976220}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
