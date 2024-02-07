@@ -13,5 +13,7 @@ builder.Services.AddScoped(http => new HttpClient
 
 builder.Services.AddMvvm();
 builder.Services.AddScoped<AddAlbumViewModel>();
+builder.Services.AddScoped<EditAlbumViewModel>();
+builder.Services.AddScoped<DeleteAlbumViewModel>();
 
 await builder.Build().RunAsync();

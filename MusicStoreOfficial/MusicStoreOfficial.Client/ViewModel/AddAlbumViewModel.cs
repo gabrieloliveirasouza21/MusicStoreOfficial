@@ -8,7 +8,6 @@ namespace MusicStoreOfficial.Client.ViewModel
 {
     public class AddAlbumViewModel : ViewModelBase
     {
-        [SupplyParameterFromForm]
         public Album album { get; set; } = new Album { Nome = string.Empty };
         public string isAdded = "";
 

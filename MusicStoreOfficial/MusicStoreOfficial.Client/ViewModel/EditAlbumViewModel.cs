@@ -7,9 +7,7 @@ namespace MusicStoreOfficial.Client.ViewModel
 {
     public class EditAlbumViewModel : ViewModelBase
     {
-        [SupplyParameterFromForm]
         public Album albumEditado { get; set; } = new Album() { Nome = string.Empty };
-        [Parameter]
         public int Id { get; set; }
         public string isEdited = "";
         private readonly IAlbumRepository _albumRepository;
@@ -22,9 +20,9 @@ namespace MusicStoreOfficial.Client.ViewModel
 
         public async Task<Album> HandleSubmit()
         {
-            var albumComId = await _albumRepository.GetAlbumByIdAsync(Id);
-
-            var albumEditado = await _albumRepository.UpdateAlbumAsync(albumComId);
+            albumEditado.AlbumId = Id;
+            var albumEdit = await _albumRepository.UpdateAlbumAsync(albumEditado);
+            isEdited = "Album Editado";
             return albumEditado;
         }
     }

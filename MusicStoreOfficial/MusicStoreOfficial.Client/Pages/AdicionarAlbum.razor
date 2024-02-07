@@ -1,5 +1,4 @@
 ﻿@page "/adicionar"
-@using MusicStoreOfficial.Client.ViewModel
 @inject NavigationManager NavigationManager
 @inherits MvvmBlazor.Components.MvvmComponentBase<AddAlbumViewModel>
 @rendermode InteractiveServer
@@ -9,7 +8,7 @@
 <hr />
 <div class="contain">
     <EditForm Model="@BindingContext.album" OnSubmit="@BindingContext.HandleSubmit" FormName="adicionarAlbum">
-        <label>Nome: </label>
+        <label class="text-white">Nome: </label>
         <br />
         <InputText @bind-Value="@BindingContext.album.Nome">
 
@@ -17,7 +16,7 @@
         <br />
         <br />
         <br />
-        <label>Artista:</label>
+        <label class="text-white">Artista:</label>
         <br />
         <InputText @bind-Value="@BindingContext.album.Artista">
 
@@ -25,7 +24,7 @@
         <br />
         <br />
         <br />
-        <label>Gênero:</label>
+        <label class="text-white">Gênero:</label>
         <br />
         <InputText @bind-Value="@BindingContext.album.Genero">
 
@@ -33,7 +32,7 @@
         <br />
         <br />
         <br />
-        <label>Link Imagem:</label>
+        <label class="text-white">Link Imagem:</label>
         <br />
         <InputText @bind-Value="@BindingContext.album.Imagem">
 
@@ -41,7 +40,7 @@
         <br />
         <br />
         <button type="submit" class="btn btn-primary">Submit</button>
-        <h4><em>@BindingContext.isAdded</em></h4>
+        <h4 class="text-white"><em>@BindingContext.isAdded</em></h4>
     </EditForm>
 </div>
 <br />

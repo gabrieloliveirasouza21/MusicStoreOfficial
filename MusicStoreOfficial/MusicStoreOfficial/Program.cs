@@ -22,6 +22,8 @@ builder.Services.AddDbContext<DbCtx>(
 
 builder.Services.AddMvvm();
 builder.Services.AddScoped<AddAlbumViewModel>();
+builder.Services.AddScoped<EditAlbumViewModel>();
+builder.Services.AddScoped<DeleteAlbumViewModel>();
 
 
 builder.Services.AddScoped<IAlbumRepository,AlbumRepositoryVM>();
