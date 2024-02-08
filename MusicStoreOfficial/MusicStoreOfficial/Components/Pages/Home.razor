@@ -19,7 +19,7 @@
     }
     else
     {
-        @foreach (var album in Bind(_viewModel,x => x.AlbumList))
+        @foreach (var album in _viewModel.AlbumList)
         {
             <div class="card bg-dark" style="width: 18rem;border:none">
                 <img src="@album.Imagem" class="card-img-top text-white">

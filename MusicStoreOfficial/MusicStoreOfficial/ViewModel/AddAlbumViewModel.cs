@@ -10,7 +10,7 @@ namespace MusicStoreOfficial.Client.ViewModel
 {
     public class AddAlbumViewModel : ViewModelBase
     {   
-        public ObservableCollection<Album> AlbumList { get; set; } = new ObservableCollection<Album>();
+        public List<Album> AlbumList { get; set; } = new List<Album>();
         public Album album { get; set; } = new Album { Nome = string.Empty };
         public string isAdded = "";
 
@@ -23,6 +23,7 @@ namespace MusicStoreOfficial.Client.ViewModel
         {
             _albumRepository = albumRepository;
             _navigationManager = navigationManager;
+            AlbumList = _albumRepository.GetAllAlbunsAsync().Result;
         }
 
         public async Task HandleSubmit()
@@ -31,7 +32,7 @@ namespace MusicStoreOfficial.Client.ViewModel
             var add = await _albumRepository.AddAlbumAsync(album);
             isAdded = $"Album {add.Nome} Adicionado";
             //AlbumList.Add(album);
-            _navigationManager.NavigateTo("/");
+     
 
 
 
