@@ -15,14 +15,10 @@ namespace MusicStoreOfficial.Client.ViewModel
         public string isAdded = "";
 
         private readonly IAlbumRepository _albumRepository;
-        private readonly NavigationManager _navigationManager;
 
-        public AddAlbumViewModel(
-            IAlbumRepository albumRepository,
-            NavigationManager navigationManager)
+        public AddAlbumViewModel(IAlbumRepository albumRepository)
         {
             _albumRepository = albumRepository;
-            _navigationManager = navigationManager;
             AlbumList = _albumRepository.GetAllAlbunsAsync().Result;
         }
 
