@@ -3,11 +3,11 @@
 @using SharedLibrary.Models
 @using SharedLibrary.Repositories
 @using System.Collections.ObjectModel
-@inject IAlbumRepository AlbumRepository
-@inject NavigationManager NavigationManager
 @inherits MvvmBlazor.Components.MvvmComponentBase<AddAlbumViewModel>
+@inject IAlbumRepository _albumRepository
+@inject NavigationManager NavigationManager
 @inject AddAlbumViewModel _viewModel
-@* @rendermode InteractiveServer *@
+@rendermode InteractiveServer
 
 
 <PageTitle>Home</PageTitle>
@@ -19,33 +19,33 @@
     }
     else
     {
-        @foreach (var album in _viewModel.AlbumList)
+        @foreach (var album in Bind(_viewModel,x => x.AlbumList))
         {
+           @*  var index = _viewModel.AlbumList.IndexOf(album); *@
             <div class="card bg-dark" style="width: 18rem;border:none">
-                <img src="@album.Imagem" class="card-img-top text-white">
+                <img src="@Bind(album,x => x.Imagem)" class="card-img-top text-white">
                 <div class="card-body">
-                    <h5 class="card-title text-white">@album.Nome</h5>
-                    <p class="card-text text-white">Artista : @album.Artista</p>
+                    <h5 class="card-title text-white">Nome: @Bind(album,x => x.Nome)</h5>
+                    <p class="card-text text-white">Artista : @Bind(album, x => x.Artista)</p>
                     <p class="card-text text-white">Gênero : @album.Genero</p>
-                    <p class="card-text text-white">Id : @album.AlbumId</p>
-                    <button class="btn btn-primary" @onclick="()=> DeletarAlbum(album.AlbumId)">Deletar</button>
+                    
+                    <DeleteModal 
+                       Album="@Bind(album,x => x)"
+                        />
                 </div>
             </div>
         }
     }
+    
 </div>
 
 @code {
 
+    
 
     protected override async Task OnInitializedAsync()
     {
-       
+        await _viewModel.IniciarListaAlbunsAsync();       
     }
-
-
-    public async Task DeletarAlbum(int id)
-    {
-       
-    }
+    
 }

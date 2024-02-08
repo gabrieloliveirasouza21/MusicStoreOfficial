@@ -1,5 +1,45 @@
-﻿<h3>DeleteModal</h3>
+﻿@using SharedLibrary.Models
+@inherits MvvmBlazor.Components.MvvmComponentBase<DeleteAlbumViewModel>
+@inject DeleteAlbumViewModel _deleteAlbum
+@rendermode InteractiveServer
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteAlbum">
+    Deletar Album
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteAlbum" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="staticBackdropLabel">Deletar Album</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @onclick="Delete">Tem Certeza que deseja Deletar esse album ?</button>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
+    [Parameter]
+    public AlbumDto Album
+    {
+        get => _album;
+        set
+        {
+            _album = value;
+        }
+    }
 
+    private AlbumDto _album;
+
+    private async Task Delete()
+    {
+        await _deleteAlbum.DeleteAlbum(Album.AlbumId);
+    }
 }

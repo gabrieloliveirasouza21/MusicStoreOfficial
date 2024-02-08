@@ -7,8 +7,8 @@ namespace MusicStoreOfficial.Client.ViewModel
 {
     public class DeleteAlbumViewModel : ViewModelBase
     {
-        [Parameter]
-        public int Id { get; set; }
+        //[Parameter]
+        public int AlbumId { get; set; }
         public string isDeleted = "";
 
 
@@ -19,11 +19,10 @@ namespace MusicStoreOfficial.Client.ViewModel
             _albumRepository = albumRepository;
         }
 
-        public async Task<Album> DeleteAlbum()
+        public async Task<Album> DeleteAlbum(int id)
         {
-            var delete = await _albumRepository.DeleteAlbumAsync(Id);
+            var delete = await _albumRepository.DeleteAlbumAsync(id);
             isDeleted = "Album deletado com sucesso";
-            await Task.Delay(500);
             return delete;
 
         }

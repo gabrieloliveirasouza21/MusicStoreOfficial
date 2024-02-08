@@ -1,4 +1,5 @@
-﻿@inject EditAlbumViewModel _editAlbum
+﻿@inherits MvvmBlazor.Components.MvvmComponentBase<EditAlbumViewModel>
+@inject EditAlbumViewModel _editAlbum
 @rendermode InteractiveServer
 
 <!-- Button trigger modal -->
@@ -55,7 +56,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" @onclick="_editAlbum.HandleSubmit">Submit</button>
             </div>
         </div>
     </div>

@@ -10,17 +10,17 @@
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-dark" id="staticBackdropLabel">Adicionar Album</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="contain">
-                    <EditForm Model="_addAlbum.album" OnSubmit="_addAlbum.HandleSubmit" FormName="adicionarAlbum">
+        <EditForm Model="NewAlbum" OnSubmit="CreateAlbum" FormName="adicionarAlbum">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="staticBackdropLabel">Adicionar Album</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="contain">
                         <label class="text-dark">Nome: </label>
                         <br />
-                        <InputText @bind-Value="_addAlbum.album.Nome">
+                        <InputText @bind-Value="NewAlbum.Nome">
 
                         </InputText>
                         <br />
@@ -28,7 +28,7 @@
                         <br />
                         <label class="text-dark">Artista:</label>
                         <br />
-                        <InputText @bind-Value="_addAlbum.album.Artista">
+                        <InputText @bind-Value="NewAlbum.Artista">
 
                         </InputText>
                         <br />
@@ -36,7 +36,7 @@
                         <br />
                         <label class="text-dark">Gênero:</label>
                         <br />
-                        <InputText @bind-Value="_addAlbum.album.Genero">
+                        <InputText @bind-Value="NewAlbum.Genero">
 
                         </InputText>
                         <br />
@@ -44,7 +44,7 @@
                         <br />
                         <label class="text-dark">Link Imagem:</label>
                         <br />
-                        <InputText @bind-Value="_addAlbum.album.Imagem">
+                        <InputText @bind-Value="NewAlbum.Imagem">
 
                         </InputText>
                         <br />
@@ -52,17 +52,22 @@
 
                         @*  <h4 class="text-white"><em>@_addAlbum.isAdded</em></h4> *@
 
-                    </EditForm>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" @onclick="_addAlbum.HandleSubmit">Adicionar</button>
-            </div>
-        </div>
+        </EditForm>
     </div>
 </div>
 
 @code {
+    public AlbumDto NewAlbum { get; set; } = new();
 
+    public async Task CreateAlbum()
+    {
+        await _addAlbum.HandleSubmit(NewAlbum);
+    }
 }
